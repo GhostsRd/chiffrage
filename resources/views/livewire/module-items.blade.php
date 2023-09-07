@@ -5,7 +5,10 @@
         
                 <h3  id="titre-prof">Page Module</h3>
                 <p id="text-prof">Devis / Developpement / Modules </p>   
-              
+                {{-- @foreach ($data as $mod )
+             
+             @endforeach
+               --}}
             </div>
             {{-- <div class="container-fluid bg-white shasow-sm rounded-2">
               
@@ -118,60 +121,30 @@
                                       <th>Id Item</th>
                                       <th>Desingation</th>
                                       <th>Commentaire</th>
-                                      <th>Tems passé</th>
+                                      <th>date debut</th>
+                                      <th>date fin</th>
                                       <th>Action</th>
                                    </tr>
                                 </thead>
                                 <tbody>
-                                   <tr>
-                    
-                                      <td class="text-muted fw-bold">1</td>
-                                      <td class="text-muted fw-bold">1</td>
-                                      <td class="text-muted fw-bold"><span class="badge bg-primary">Page parametrage</span></td>
-                                      <td class="text-muted fw-bold">en cours de devellopement</td>
-                                      <td class="text-muted fw-bold">2 jours</td>
-                                      <td>
+                                    @foreach ($data as $module )
+                                        
+                                    <tr>
+                   
+                                        <td class="text-muted fw-bold">{{$module->id_module}}</td>
+                                        <td class="text-muted fw-bold"><span class="badge bg-primary">{{$module->id_item}}</span></td>
+                                        <td class="text-muted fw-bold">{{$module->designation}}</td>
+                                       <td class="text-muted fw-bold">{{$module->commentaire}}</td>
+                                       <td class="text-muted fw-bold">{{$module->date_debut}}</td>
+                                       <td class="text-muted fw-bold">{{$module->date_fin}}</td>
+                                       <td>
+                                 
+                                         <button class="btn btn-sm badge bg-warning">Edit</button>
+                                        <button class="btn btn-sm badge bg-danger">delete</button>
+                                       </td>
+                                    </tr>
+                                    @endforeach
                                 
-                                        <button class="btn btn-sm badge bg-warning">Edit</button>
-                                       <button class="btn btn-sm badge bg-danger">delete</button>
-                                      </td>
-                                   </tr>
-                                   <tr>
-                    
-                                    <td class="text-muted fw-bold">1</td>
-                                    <td class="text-muted fw-bold">2</td>
-                                    <td class="text-muted fw-bold"><span class="badge bg-primary">facturation</span></td>
-                                    <td class="text-muted fw-bold">OK</td>
-                                    <td class="text-muted fw-bold">2 sémaine</td>
-                                    <td>
-                                     <button class="btn btn-sm badge bg-warning">delete</button>
-                                    </td>
-                                 </tr>
-                                 <tr>
-                    
-                                    <td class="text-muted fw-bold">1</td>
-                                    <td class="text-muted fw-bold">2</td>
-                                    <td class="text-muted fw-bold"><span class="badge bg-primary">facturation</span></td>
-                                    <td class="text-muted fw-bold">OK</td>
-                                    <td class="text-muted fw-bold">2 sémaine</td>
-                                    <td>
-                                     <button class="btn btn-sm badge bg-warning">delete</button>
-                                    </td>
-                                 </tr>
-                                 <tr>
-                    
-                                    <td class="text-muted fw-bold">1</td>
-                                    <td class="text-muted fw-bold">2</td>
-                                    <td class="text-muted fw-bold"><span class="badge bg-primary">facturation</span></td>
-                                    <td class="text-muted fw-bold">OK</td>
-                                    <td class="text-muted fw-bold">2 sémaine</td>
-                                    <td>
-                                     <button class="btn btn-sm badge bg-warning">delete</button>
-                                    </td>
-                                 </tr>
-                    
-                           
-                           
                                  
                                
                                   

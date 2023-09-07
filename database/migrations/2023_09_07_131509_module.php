@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Employer extends Migration
+class Module extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class Employer extends Migration
      */
     public function up()
     {
-        Schema::create('employers', function (Blueprint $table) {
-            $table->id("id_profiles")->autoIncrement();
-            $table->string('nom');
-            $table->string('profile');
-            $table->string('contact');
-            $table->integer('tarif');
+        Schema::create('modules', function (Blueprint $table) {
+            $table->id("id")->autoIncrement();
+            $table->integer("id_module");
+            $table->integer('id_item');
+            $table->string('designation');
+            $table->string('commentaire');
+            $table->date('date_debut');
+            $table->date("date_fin");
             $table->timestamps();
         });
     }
