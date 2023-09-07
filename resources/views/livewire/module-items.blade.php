@@ -131,7 +131,7 @@
                                       <td class="text-muted fw-bold">en cours de devellopement</td>
                                       <td class="text-muted fw-bold">2 jours</td>
                                       <td>
-                                        <button class="btn btn-sm badge bg-warning">add</button>
+                                
                                         <button class="btn btn-sm badge bg-warning">Edit</button>
                                        <button class="btn btn-sm badge bg-danger">delete</button>
                                       </td>
