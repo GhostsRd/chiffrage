@@ -11,15 +11,21 @@ class ModuleItems extends Component
 {
     public $value= "";
     public $data = [];
+    public $form = "";
 
     public function formulareAjouter(){
         $this->value ="active";
     }
+    public function modificationForm(){
+        $this->form = "active";
+    }
     public function exit(){
         $this->value ="";
+        $this->form = "";
     }
     public function mount(){
         $this->value;
+        $this->form;
         $this->data = Modules::all();
      
     }

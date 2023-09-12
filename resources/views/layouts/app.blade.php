@@ -156,7 +156,7 @@
                             </a>
                             <ul id="dev-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                               <li>
-                                <a href="" class="nav-link bg-white">
+                                <a href="{{route('sectionDev')}}" class="nav-link bg-white">
                                   <i class="bi bi-circle">
                                     <svg class="icon-10" xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                                       <g>
@@ -171,9 +171,9 @@
                                       <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
                                       </g>
                                   </svg>  
-                                  </i><span>{{__('Modules')}}</span>
+                                  </i><span>{{__('Modules et Items')}}</span>
                                 </a>
-                                <a href="" class="nav-link bg-white">
+                                {{-- <a href="" class="nav-link bg-white">
                                   <i class="bi bi-circle">
                                     <svg class="icon-10" xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                                       <g>
@@ -181,7 +181,7 @@
                                       </g>
                                   </svg>  
                                   </i><span>{{__('Items')}}</span>
-                                </a>
+                                </a> --}}
   
                             </ul>
                           </li><!-- End Components Nav -->

@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Profiles;
+use App\Http\Controllers;
 use App\Http\Controllers\Devis\ModuleItems;
+use App\Http\Controllers\Devis\SectionDev;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +32,7 @@ Route::post('/profiles/update', [App\Http\Livewire\Profiles::class, 'update']);
 Route::get('/profiles/{id}', [App\Http\Livewire\Profiles::class, 'destroy']);
 Route::get('/test', [App\Http\Livewire\Test::class, 'render'])->name('test');
 
-
+Route::get('/section/dev',[SectionDev::class,'index'])->name('sectionDev');
 Route::get('/module',[ModuleItems::class,'index']);
 Route::get('/item',[App\Http\Livewire\Item::class,'render']);
 
