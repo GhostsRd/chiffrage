@@ -38,10 +38,10 @@
 
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
-                              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#{{ $prof->id_profiles }}" role="tab" aria-controls="home" aria-selected="true">#</a>
+                              {{-- <a class="nav-link active" id="home-tab" data-toggle="tab" href="#{{ $prof->id }}" role="tab" aria-controls="home" aria-selected="true">#</a> --}}
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link "  id="profile-tab" data-toggle="tab" href="#{{ $prof->id_profiles}}x" role="tab" aria-controls="profile" aria-selected="false">Modifier</a>
+                              <a class="nav-link "  id="profile-tab" data-toggle="tab" href="#{{ $prof->id}}x" role="tab" aria-controls="profile" aria-selected="false">Modifier</a>
                             </li>
                         
                         </ul>
@@ -51,14 +51,14 @@
 
                             <div class="row">
                                 <div class="col-lg-3">
-
-                                    <img  src="images/{{$prof->id_profiles}}.png" alt="" class="rounded-circle " 
+                                  
+                                    <img  src="{{ asset('storage/images/'.$prof->image)}}" alt="" class="rounded-circle " 
                                     style="width:100px; height:100px;">
                             
                                 </div>
                                 <div class="col-lg-7">
 
-                                    <div class="tab-pane fade show active" id="{{$prof->id_profiles}}" role="tabpanel" aria-labelledby="home-tab">
+                                    <div class="tab-pane fade show active" id="{{$prof->id}}" role="tabpanel" aria-labelledby="home-tab">
                                         <span class="p-2 text-primary text-center text-uppercase">{{ $prof->nom }}</span> <br>
                                         <span class="p-2 text-muted">contact :           {{ $prof->contact }}</span> <br>
                                         <span class="p-2 text-muted">profiles :          {{ $prof->profile }}</span><br>
@@ -70,11 +70,11 @@
                                 </div>
                             </div>
                             
-                            <div class="tab-pane fade "   id="{{ $prof->id_profiles }}x" role="tabpanel" aria-labelledby="profile-tab">
+                            <div class="tab-pane fade "   id="{{ $prof->id }}x" role="tabpanel" aria-labelledby="profile-tab">
                                 <form  action="{{url('/profiles/update')}}"   class="form" method="POST">
                                     @csrf
                               
-                                    <input type="hidden" name="id_profiles" value="{{ $prof->id_profiles }}">
+                                    <input type="hidden" name="id" value="{{ $prof->id }}">
                                     <div class="coloumn">
                                       <div class="row">
                                         <div class="col-5">
@@ -125,15 +125,15 @@
 
                   <ul class="nav nav-tabs" id="myTab" role="tablist">
                       <li class="nav-item">
-                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#list" role="tab" aria-controls="home" aria-selected="true">liste</a>
+                        <a class="nav-link " id="home-tab" data-toggle="tab" href="#list" role="tab" aria-controls="home" aria-selected="true">liste</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link "  id="profile-tab" data-toggle="tab" href="#ajouter" role="tab" aria-controls="profile" aria-selected="false">Ajouter</a>
+                        <a class="nav-link active "  id="profile-tab" data-toggle="tab" href="#ajouter" role="tab" aria-controls="profile" aria-selected="false">Ajouter</a>
                       </li>
                   
                   </ul>
                     <div class="tab-content" id="myTabContent">
-                      <div class="tab-pane fade show active" id="list" role="tabpanel" aria-labelledby="home-tab">
+                      <div class="tab-pane fade show " id="list" role="tabpanel" aria-labelledby="home-tab">
                           <div class="col-sm-7 offset-2 p-4">
                               <input type="text" name="recherche" wire:model="recherche"   placeholder="Entrer votre recherche ici" class="form-control">
                             
@@ -153,11 +153,11 @@
                               <tbody>
                                   @foreach ($profs as $prof )
                                   <tr>
-                                      <td>{{ $prof->id_profiles }}</td>
+                                      <td>{{ $prof->id }}</td>
                                       <td>{{ $prof->nom }}</td>
                                       <td>{{ $prof->profile }}</td>
                                       <td>{{ $prof->tarif }}</td>
-                                      <td><a class="nav-link" href="{{url('/profiles',$prof->id_profiles)}}"><img src="/images/delete1.png" alt="" style="width: 20px;"></a></td>
+                                      <td><a class="nav-link" href="{{url('/profiles',$prof->id)}}"><img src="/images/delete1.png" alt="" style="width: 20px;"></a></td>
 
                                   </tr>
                                   @endforeach
@@ -169,7 +169,7 @@
                       </div>    
                   
                     
-                      <div class="tab-pane fade "   id="ajouter" role="tabpanel" aria-labelledby="profile-tab">
+                      <div class="tab-pane fade show active "   id="ajouter" role="tabpanel" aria-labelledby="profile-tab">
                         <div class="col-12 offset-1">
                           <h3 class="text mt-2" >Ajouter un employer</h3><br>
 
@@ -206,31 +206,33 @@
                                     </div>
                                 </a>
                             </li>
-                        </ul>
-                            <form action="">
+                        </ul> 
+
+                      
+                            <form  wire:submit.prevent="store">
                                 @csrf
                                 
                                 <div class="coloumn">
                                   <div class="row">
                                     <div class="col-lg-5">
                                       <label for="nom" class="text-muted m-2">{{_('Nom *')}}</label>
-                                      <input type="text" id="nom" name="nom" class="card-title form-control m-2" placeholder="Nom">          
+                                      <input type="text" id="nom" wire:model.lazy="nom" name="name" class="card-title form-control m-2" placeholder="Nom">          
                                       <label for="profile" class="text-muted m-2">{{_('Profiles *')}}</label>             
-                                      <input type="select" name="profile" id="profile" class="card-title form-control m-2" placeholder="Profiles" required>        
+                                      <input type="select" name="profiles" wire:model="profiles"  id="profile" class="card-title form-control m-2" placeholder="Profiles" required>        
 
                                     </div>
                                     <div class="col-lg-5">
                                       <label for="contact" class="text-muted m-2">{{_('Contact *')}}</label>
-                                      <input type="text" name="contact" class="card-title form-control m-2" placeholder="contact" required> 
-                                      <label for="#tarif" class="text-muted m-2">{{_('Tarif *')}}</label>              
-                                      <input type="text" name="tarif" id="tarif" class="card-title form-control m-2" placeholder="tarif par jour" required>                         
-                                      <label for="#image" class="text-muted m-2">{{_('Image *')}}</label>
-                                      <input type="file" name="image" id="image" class="card-title form-control m-2" required>
+                                      <input type="text" name="contact" wire:model.lazy="contact"  class="card-title form-control m-2" placeholder="contact" required> 
+                                      <label for="#tarif" class="text-muted m-2" >{{_('Tarif *')}}</label>              
+                                      <input type="text" name="tarif" id="tarif" wire:model="tarifs"  class="card-title form-control m-2" placeholder="tarif par jour" required>                         
+                                      <label for="#image" class="text-muted m-2" >{{_('Image *')}}</label>
+                                      <input type="file" name="file" id="image" wire:model="file"  class="card-title form-control m-2" required>
                                       
                                     </div>
                                   </div>
                                 </div>
-                                <button type="submit" class="btn  btn-success offset-9 m">ajouter</button>
+                                <button type="submit" class="btn  btn-success offset-9 m" wire:click.prevent="store">ajouter</button>
                                 
                                 
                               </form>

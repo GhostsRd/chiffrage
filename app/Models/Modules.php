@@ -10,6 +10,6 @@ class Modules extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id_module','id_items', 'designation', 'commentaire','date_debut','date_fin'
+        'id_module','id_item', 'designation', 'commentaire','date_debut','date_fin'
     ];
 }

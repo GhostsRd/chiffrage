@@ -16,6 +16,25 @@
   color: white;
   transition: 0.8s;
 }
+#cadrage {
+  border-radius: 10px; 
+  margin-left: 5px;
+  margin-top: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  display: inline;
+  background-color: #012a70;
+  color: white;
+  transition: 0.8s;
+}
+#cadrage:hover {
+  animation: animated 5s infinite;
+}
+@keyframes animated {
+  50% {
+    background: linear-gradient(#012a70,rgb(46, 55, 140),#012a70);
+  }
+}
 #logo {
   position: absolute;
   width: 57px;

@@ -31,10 +31,15 @@ Route::get('/profiles', [App\Http\Controllers\parametrage\profiles::class,'index
 Route::post('/profiles/update', [App\Http\Livewire\Profiles::class, 'update']);
 Route::get('/profiles/{id}', [App\Http\Livewire\Profiles::class, 'destroy']);
 Route::get('/test', [App\Http\Livewire\Test::class, 'render'])->name('test');
+// Route::post('/create', [App\Http\Livewire\Profiles::class, 'store'])->name('store');
+Route::post('/update', [App\Http\Livewire\ModuleItems::class, 'update']);
 
 Route::get('/section/dev',[SectionDev::class,'index'])->name('sectionDev');
 Route::get('/module',[ModuleItems::class,'index']);
 Route::get('/item',[App\Http\Livewire\Item::class,'render']);
+
+
+Route::get('/analyseCadrage',[App\Http\Controllers\devis\AnalyseCadrage::class,'index']);
 
 // mapias route groupe
 // 

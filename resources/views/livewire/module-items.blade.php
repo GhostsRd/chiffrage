@@ -101,7 +101,7 @@
                                 <div class="row">
                                     <div class="col-10">
                     
-                                        <input type="text" class="form-control" placeholder="Entrer votre recheche ici">
+                                        <input type="text" class="form-control" wire:model="recherche" placeholder="Entrer votre recheche par designation ici">
                                     </div>
                                     <div class="col-2" wire:click="formulareAjouter">
                                         <svg class="icon-32 text-success" id="added" width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                
@@ -121,8 +121,9 @@
                                       <th>Id Item</th>
                                       <th>Desingation</th>
                                       <th>Commentaire</th>
-                                      <th>date debut</th>
-                                      <th>date fin</th>
+                                      {{-- <th>date debut</th>
+                                      <th>date fin</th> --}}
+                                      <th>Temps passé</th>
                                       <th>Action</th>
                                    </tr>
                                 </thead>
@@ -135,9 +136,17 @@
                                         <td class="text-muted fw-bold"><span class="badge bg-primary">{{$module->id_item}}</span></td>
                                         <td class="text-muted fw-bold">{{$module->designation}}</td>
                                        <td class="text-muted fw-bold">{{$module->commentaire}}</td>
-                                       <td class="text-muted fw-bold">{{$module->date_debut}}</td>
-                                       <td class="text-muted fw-bold">{{$module->date_fin}}</td>
-                                       <td>
+                                       {{-- <td class="text-muted fw-bold">{{$module->date_debut}}</td>
+                                       <td class="text-muted fw-bold">{{$module->date_fin}}</td> --}}
+                                       <td class="text-muted fw-bold">
+                                           @if ( ($jour = (abs(strtotime($module->date_fin) - strtotime($module->date_debut)) /86400  ) + 1)==1)
+                                               {{$jour}} jour
+                                           @else
+                                           {{$jour}} jours
+                                           @endif
+
+                                       </td>
+                                        <td>
                                  
                                          <button class="btn btn-sm badge bg-warning" wire:click="modificationForm">Edit</button>
                                         <button class="btn btn-sm badge bg-danger">delete</button>
@@ -241,30 +250,30 @@
                               </a>
                           </li>
                       </ul>
-                          <form action="">
+                          <form wire:submit.prevent="storeModule">
                               @csrf
                               
                               <div class="coloumn">
                                 <div class="row">
                                   <div class="col-lg-5">
                                     <label for="module">N° module</label>
-                                    <input type="number" name="id_module" id="module" class="form-control" placeholder="Entrer n° du module">
+                                    <input type="number" wire:model="numModule" name="id_module" id="module" class="form-control" placeholder="Entrer n° du module">
                                     <label for="nom" class="text-muted m-2">{{_('Designation *')}}</label>
-                                    <input type="text" id="nom" name="designation" class="card-title form-control m-2" placeholder="Désignation">          
+                                    <input type="text" id="nom" wire:model="designation" name="designation" class="card-title form-control m-2" placeholder="Désignation">          
+                                    <label for="profile"  class="text-muted m-2">{{_('Id Items *')}}</label>             
+                                    <input type="number" name="id_item"  wire:model="item" id="Items" class="card-title form-control m-2" placeholder="Id Items" required>        
                                     <label for="profile"  class="text-muted m-2">{{_('Items *')}}</label>             
-                                    <input type="number" name="id_item" id="Items" class="card-title form-control m-2" placeholder="Id Items" required>        
-                                    <label for="profile"  class="text-muted m-2">{{_('Items *')}}</label>             
-                                    <input type="text" name="id_item" id="Items" class="card-title form-control m-2"  placeholder="nom de l'item" required>        
+                                    <input type="text" name="id_item"   id="Items" class="card-title form-control m-2"  placeholder="nom de l'item" required>        
     
                                   </div>
                                   <div class="col-lg-5">
                                     <label for="comment" class="text-muted m-2">{{_('Status *')}}</label>
-                                    <textarea name="commmentaire" id="comment" cols="25" rows="5" class="form-control" placeholder="placer votre Commentaire ici"></textarea>
+                                    <textarea name="commmentaire" wire:model="comment"  id="comment" cols="25" rows="5" class="form-control" placeholder="placer votre Commentaire ici"></textarea>
 
                                     <label for="contact" class="text-muted m-2">{{_('Date du début *')}}</label>
-                                    <input type="date" name="date_debut" class="card-title form-control m-2" required> 
+                                    <input type="date" name="date_debut" wire:model="dateDeb"  class="card-title form-control m-2" required> 
                                     <label for="date" class="text-muted m-2">{{_('Date du fin *')}}</label>
-                                    <input type="date" name="date_fin" class="card-title form-control m-2" required>
+                                    <input type="date" name="date_fin" wire:model="dateFin"  class="card-title form-control m-2" required>
                                     {{-- <label for="#tarif" class="text-muted m-2">{{_('Tarif *')}}</label>              
                                     <input type="text" name="tarif" id="tarif" class="card-title form-control m-2" placeholder="tarif par jour" required>                         
                                      --}}
@@ -272,7 +281,7 @@
                                   </div>
                                 </div>
                               </div>
-                              <button type="submit" class="btn  btn-success offset-9 mt-2">Créer</button>
+                              <button type="submit" class="btn  btn-success offset-9 mt-2" >Créer</button>
                               
                               
                             </form>
@@ -326,13 +335,13 @@
                           </a>
                       </li>
                   </ul>
-                      <form action="">
+                      <form action="{{url('/update')}}" method="POST">
                           @csrf
                           
                           <div class="coloumn">
                             <div class="row">
                               <div class="col-lg-5">
-                                  <input type="hidden" name="id" value="{{$dat->id}}">
+                                  <input type="hidden"  name="id" value="{{$dat->id}}">
                                   <label for="module">N° module</label>
                                 <input type="number" name="id_module" id="module" class="form-control" value="{{$dat->id_module}}">
                                 <label for="nom" class="text-muted m-2">{{_('Designation *')}}</label>

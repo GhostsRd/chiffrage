@@ -110,14 +110,39 @@
                               <span>MENU</span>
                             </a>
                           </li><!-- End Dashboard Nav -->
-                         
+                          <li class="nav-heading">Pages</li>
+                          <li class="nav-items">
+                            <a class="nav-link collapsed dropdown-toggle " data-bs-target="#projet-nav" data-bs-toggle="collapse" href="#">
+                              <i class="bi bi-menu-button-wide">
+                                <svg class="icon-32" width="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">        
+                                <path opacity="0.4" d="M16.6203 22H7.3797C4.68923 22 2.5 19.8311 2.5 17.1646V11.8354C2.5 9.16894 4.68923 7 7.3797 7H16.6203C19.3108 7 21.5 9.16894 21.5 11.8354V17.1646C21.5 19.8311 19.3108 22 16.6203 22Z" fill="currentColor"></path>                                <path d="M15.7551 10C15.344 10 15.0103 9.67634 15.0103 9.27754V6.35689C15.0103 4.75111 13.6635 3.44491 12.0089 3.44491C11.2472 3.44491 10.4477 3.7416 9.87861 4.28778C9.30854 4.83588 8.99272 5.56508 8.98974 6.34341V9.27754C8.98974 9.67634 8.65604 10 8.24487 10C7.8337 10 7.5 9.67634 7.5 9.27754V6.35689C7.50497 5.17303 7.97771 4.08067 8.82984 3.26285C9.68098 2.44311 10.7814 2.03179 12.0119 2C14.4849 2 16.5 3.95449 16.5 6.35689V9.27754C16.5 9.67634 16.1663 10 15.7551 10Z" fill="currentColor"></path>                                </svg>                            
+                            </i><span>{{__('Gestion du projet')}}</span><i class="bi bi-chevron-down ms-auto"></i>
+                            </a>
+                            <ul id="projet-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                              <li>
+                                <a href="" class="nav-link bg-white">
+                                  <i ><svg class="icon-10" xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
+                                    <g>
+                                    <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
+                                    </g>
+                                </svg></i><span>{{__('A propos du projet')}}</span>
+                                </a>
+                                <a href="" class="nav-link bg-white">
+                                  <i ><svg class="icon-10" xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
+                                    <g>
+                                    <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
+                                    </g>
+                                </svg></i><span>{{__('A propos du client')}}</span>
+                                </a>
+                            </ul>
+                          </li>
                           <li class="nav-heading">Pages devis</li>
 
                           <li class="nav-item">
                             <a class="nav-link collapsed dropdown-toggle " data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
                               <i class="bi bi-menu-button-wide">
                                 <svg width="18" height="18" fill="#000000" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
-                                viewBox="0 0 32 32" xml:space="preserve">
+                                viewBox="0 0 32 32"   :space="preserve">
                              <path id="concept--expansion_1_" d="M31,31.36H21c-0.199,0-0.36-0.161-0.36-0.36v-1.64H16c-0.199,0-0.36-0.161-0.36-0.36V16.358
                                h-4.292C11.163,19.147,8.835,21.36,6,21.36c-2.956,0-5.36-2.405-5.36-5.36c0-2.956,2.404-5.36,5.36-5.36
                                c2.834,0,5.161,2.21,5.348,4.998h4.292V3c0-0.199,0.161-0.36,0.36-0.36l4.64-0.002V1c0-0.199,0.161-0.36,0.36-0.36h10
@@ -132,7 +157,7 @@
                             </a>
                             <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                               <li>
-                                <a href="" class="nav-link bg-white">
+                                <a href="{{url('/analyseCadrage')}}" class="nav-link bg-white">
                                   <i ><svg class="icon-10" xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                                     <g>
                                     <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
