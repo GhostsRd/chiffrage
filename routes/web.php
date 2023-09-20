@@ -41,6 +41,8 @@ Route::get('/item',[App\Http\Livewire\Item::class,'render']);
 
 Route::get('/analyseCadrage',[App\Http\Controllers\devis\AnalyseCadrage::class,'index']);
 
+
+Route::get('/gererProjet',[\App\Http\Controllers\ressource\GererProjet::class,'index']);
 // mapias route groupe
 // 
 

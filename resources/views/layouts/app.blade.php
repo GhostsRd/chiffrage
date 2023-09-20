@@ -26,7 +26,7 @@
     <link href="/css/app.css" rel="stylesheet">
     @livewireStyles
 </head>
-<body>
+<body >
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm rounded-2">
             <div class="container">
@@ -120,7 +120,7 @@
                             </a>
                             <ul id="projet-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                               <li>
-                                <a href="" class="nav-link bg-white">
+                                <a href="{{url('/gererProjet')}}" class="nav-link bg-white">
                                   <i ><svg class="icon-10" xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                                     <g>
                                     <circle cx="12" cy="12" r="8" fill="currentColor"></circle>

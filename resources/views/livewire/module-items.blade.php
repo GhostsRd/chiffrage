@@ -101,7 +101,7 @@
                                 <div class="row">
                                     <div class="col-10">
                     
-                                        <input type="text" class="form-control" wire:model="recherche" placeholder="Entrer votre recheche par designation ici">
+                                        <input type="text" class="form-control border-0 shadow-sm" wire:model="recherche" placeholder="Recheche par designation ici">
                                     </div>
                                     <div class="col-2" wire:click="formulareAjouter">
                                         <svg class="icon-32 text-success" id="added" width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                
