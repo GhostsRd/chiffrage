@@ -2013,7 +2013,8 @@ progress {
 
 .table-light {
   --bs-table-color: #000;
-  --bs-table-bg: #f8f9fa;
+  /* --bs-table-bg: #f8f9fa; */
+  --bs-table-bg: rgba(255, 255, 255, 0.819);
   --bs-table-border-color: #dfe0e1;
   --bs-table-striped-bg: #ecedee;
   --bs-table-striped-color: #000;
@@ -2135,7 +2136,7 @@ progress {
 .form-control:focus {
   color: var(--bs-body-color);
   background-color: var(--bs-body-bg);
-  border-color: #86b7fe;
+  border-color: #f686fe;
   outline: 0;
   box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
@@ -7591,7 +7592,9 @@ textarea.form-control-lg {
 .border-opacity-100 {
   --bs-border-opacity: 1;
 }
-
+.w-10 {
+  width: 10% !important;
+}
 .w-25 {
   width: 25% !important;
 }
@@ -8735,6 +8738,10 @@ textarea.form-control-lg {
 .bg-success {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity)) !important;
+}
+.bg-purple{
+  -bs-bg-opacity: 1;
+  background-color: #e3ecff;
 }
 
 .bg-info {

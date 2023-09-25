@@ -1,4 +1,78 @@
+#tex{
+  text-shadow: 0 0 10px rgba(65, 65, 65, 0.756);
+}
+#form-hovered {
+  width: 250px;
+  transistion: 1s;
+}
+#form-hovered:focus  {
+  width: 100%;
+  transistion: 1s;
+}
+#sidebar.active {
 
+}
+#tex:hover {
+  transform: translate(1.2,1.2);
+
+}
+.navigation {
+  /* border-bottom: #012970; */
+  
+}
+.navigation:hover
+{
+  text-decoration: none;
+  list-style: none;
+  color: white;
+  cursor: pointer;
+  /* box-shadow: 0 0 5px black; */
+
+  /* background-color: #012970; */
+  /* background: linear-gradient(rgb(32, 32, 84),rgb(84, 30, 84)); */
+  background: rgba(0, 179, 255, 0.539);;
+  transition: 0.6s;
+}
+table {
+
+  box-shadow: 0 0 1px black;
+  border-radius: 3px;
+}
+thead{
+  background-color: #012a70;
+  
+  border-bottom: 1px solid black;
+  border-collapse: collapse;
+}
+tr:nth-child(2n) {
+  background-color: #e2e9f7;
+  opacity: 1;
+  
+  /* animation: 0.2s anim ease; */
+} 
+
+.modif {
+  color: rgba(0, 179, 255, 0.539);
+  transition: 0.2;
+  cursor: pointer;
+}
+.title-form {
+  color:#012970;
+}
+.modif:hover {
+  color: #012970;
+  transition: 0.2s;
+  
+}
+.hover {
+  color: rgba(255, 0, 187, 0.539);
+  transition: 0.2;
+}
+.hover:hover {
+  color:rgb(221, 0, 255);
+  transition: 0.2s;
+  
+}
 #personnel {
   background-color:#f6f9ff;
   border-radius: 10px; 
@@ -11,7 +85,7 @@
  
   padding: 20px;
 }
-#personnel:active,#personnel:hover {
+#personnel:focus,#personnel:hover  {
   background-color: #012a70;
   color: white;
   transition: 0.8s;
@@ -99,7 +173,7 @@
   height: auto;
   position: absolute;
   opacity: 1;
-  top: -100%;
+  top: -300%;
   /* top: 20%; */
   /* left: -100%; */
   /* zoom: -100%; */
@@ -115,11 +189,33 @@
   position: absolute;
   top: 10%;
   box-shadow: 0px 0px 100px 10px rgba(219, 219, 219, 0.567);
-  /* box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); */
   left:20%;
   zoom: 0%;
   transition: 0.3s;
   opacity: 1;
+}
+#formItems.active {
+  position: absolute;
+  top: 10%;
+  box-shadow: 0px 0px 100px 10px rgba(219, 219, 219, 0.567);
+  left:35%;
+  zoom: 0%;
+  transition: 0.3s;
+  opacity: 1;
+}
+#formItems {
+  background: white;
+  width: 45%;
+  height: auto;
+  position: absolute;
+  opacity: 1;
+  top: -300%;
+  padding: 10px;
+  z-index: 12;
+  border-radius: 10px;
+  border-top-style:outset ;
+  overflow: hidden;
+  transition: 0.6s;
 }
 #form1{
   background: white;
@@ -903,12 +999,12 @@ h6 {
 }
 
 .sidebar-nav .nav-link:hover {
-  color: #4154f1;
+  color: #012970;
   background: #f6f9ff;
 }
-.sidebar-nav .nav-link:active {
-  color: #e5e6ed;
-  background: #43474e;
+.sidebar-nav .nav-link:focus {
+  color: #012970;
+  background: #f6f9ff;
   animation-duration: 12s;
 }
 

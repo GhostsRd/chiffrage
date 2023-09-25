@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Module extends Migration
+class Projets extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class Module extends Migration
      */
     public function up()
     {
-        Schema::create('modules', function (Blueprint $table) {
+        Schema::create('projets', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->integer("id_module");
-            $table->integer('id_item');
-            $table->string('designation');
-            $table->string('commentaire');
-            $table->date('date_debut');
-            $table->date("date_fin");
+            $table->integer('id_client');
+            $table->string('titre');
+            $table->string('description');
+            $table->string('objectif');
+            $table->date("date_de_création");
             $table->timestamps();
         });
     }

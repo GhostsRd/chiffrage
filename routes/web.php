@@ -5,6 +5,11 @@ use App\Http\Livewire\Profiles;
 use App\Http\Controllers;
 use App\Http\Controllers\Devis\ModuleItems;
 use App\Http\Controllers\Devis\SectionDev;
+use App\Http\Controllers\GererClient;
+use App\Http\Controllers\ressource\GererProjet as RessourceGererProjet;
+use App\Http\Livewire\AnalyseCadrage;
+use App\Http\Livewire\GererClient as LivewireGererClient;
+use App\Http\Livewire\GererProjet;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,9 +45,17 @@ Route::get('/item',[App\Http\Livewire\Item::class,'render']);
 
 
 Route::get('/analyseCadrage',[App\Http\Controllers\devis\AnalyseCadrage::class,'index']);
-
+Route::get('/analyseCadrage/{id}',[AnalyseCadrage::class, 'destroy']);
 
 Route::get('/gererProjet',[\App\Http\Controllers\ressource\GererProjet::class,'index']);
-// mapias route groupe
+Route::get('/gererProjet/destroy/{id}',[GererProjet::class,'destroy']);
+Route::post('/gererProjet/update', [GererProjet::class, 'update']);
+
+// mapias route groupe,
 // 
 
+// route client component
+Route::get('/gererClient',[\App\Http\Controllers\ressource\GererClient::class,'index']);
+Route::post('/gererClient/update', [LivewireGererClient::class, 'update']);
+Route::get('/gererClient/{id}',[LivewireGererClient::class, 'destroy']);
+// Route::get('/gererClient/find/{recherche}',[LivewireGererClient::class, 'find']);

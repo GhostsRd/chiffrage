@@ -17,8 +17,10 @@ class Profiles extends Component
      use WithFileUploads;
 
     public $tarif;
+    public $profs  =[];
 
     public $form = "" ;
+    public $form2 = "" ;
     public $count;
     public $recherche;
     
@@ -27,20 +29,27 @@ class Profiles extends Component
     public $contact;
     public $tarifs;
     public $file;
+    // modif prpoerties
+    public $modifier = [];
+    public $val = "1" ;
     
     
-    public function afficher(){
+    public function active(){
         $this->form = "active";
     }
-    public function exit(){
+    public function desactive(){
         $this->form = "";
         
     }
-    public function  mount(){
-        $this->form ;
+    public function active2(){
+        $this->form2 = "active";
+    }
+    public function desactive2(){
+        $this->form2 = "";
+        
     }
     public function store(Request $request){
-        $profimg = date('Ymdhis').'.'.$this->file->getClientOriginalExtension();
+        $profimg = date('Ymdhis');
         // dd($request);
         employers::create([
             
@@ -50,36 +59,44 @@ class Profiles extends Component
             'tarif' => $this->tarifs,
             'image' => $profimg,
         ]);
-        $this->file->storeAs('images',$profimg);
+        // $this->file->storeAs('images',$profimg);
         // $img = $this->file;
         // $destpath = 'images/';
         // $rd = $this->file;
         // dd($rd);
         // $img->move_uploaded_file($profimg,$destpath);
-        // return redirect('/profiles');
+        return redirect('/profiles');
     }
     public function update(Request $request){
         
-
+ 
         employers::where('id',$request->id)->update([
             'nom' => $request->nom,
             'profile' => $request->profile,
             'contact' => $request->contact,
             'tarif' => $request->tarif,
+            'image' => $request->tarif,
         ]);
         return redirect('/profiles');
     }
-
+    
     public function destroy($id){
         employers::where('id',$id)->delete();
         return redirect('/profiles');
+    }
+    public function  mount(){
+        $this->profs;
+        $this->form ;
+        $this->form2 ;
+        $this->modifier ;
     }
     public function render()
     {
        
         return view('livewire.profiles',[
-            'profs'  => employers::where('nom','like','%'.$this->recherche.'%')->get(),
-            
+            $this->profs  = employers::where('nom','like','%'.$this->recherche.'%')->get(),
+            $this->modifier  = employers::where('id','like','%'.$this->val.'%')->get(),
+
         ]);
     }
     

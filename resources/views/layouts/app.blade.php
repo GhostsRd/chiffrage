@@ -31,10 +31,11 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm rounded-2">
             <div class="container">
               {{-- <img id="logo" src="images/ee.png" alt=""> --}}
-                <a class="navbar-brand" href="{{ url('/') }}" style="color:#012970;font-family:Geneva;">
+                <a  class="fw-bold text-success navbar-brand" href="{{ url('/') }}"> 
+                  {{-- style="color:#012970;font-family:Geneva;" --}}
                     {{ config('app.name', 'Laravel') }}
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <button id="side" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -86,7 +87,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-2">
-                    <aside id="sidebar" class="sidebar rounded-2 col-2" id="sidebar" style="font-family:Geneva;" >
+                    <aside  class="sidebar rounded-2 col-2" id="sidebar" style="font-family:Geneva;" >
 
                         <ul class="sidebar-nav" id="sidebar-nav">
                           <li class="nav-item ">
@@ -127,7 +128,7 @@
                                     </g>
                                 </svg></i><span>{{__('A propos du projet')}}</span>
                                 </a>
-                                <a href="" class="nav-link bg-white">
+                                <a href="{{url('/gererClient')}}" class="nav-link bg-white">
                                   <i ><svg class="icon-10" xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                                     <g>
                                     <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
@@ -249,7 +250,7 @@
                             </a>
                             <ul id="facture-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                               <li>
-                                <a href="/gestion_classe">
+                                <a href="#">
                                   <i class="bi bi-circle">
                                     <svg class="icon-10" xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                                       <g>
@@ -312,14 +313,21 @@
 
     </div>
     @livewireScripts
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script> --}}
     <script>
-        $('#myTab a').on('click', function (e) {
-  e.preventDefault()
-  $(this).tab('show')
-})
+//         $('#myTab a').on('click', function (e) {
+//   e.preventDefault()
+//   $(this).tab('show')
+// })
+    var sd = document.getElementById("side");
+    sd.addEventListener("click",function(){
+      alert('bonjour')
+    })
 
 
     </script>
+    <script>
+      
+
 </body>
 </html>

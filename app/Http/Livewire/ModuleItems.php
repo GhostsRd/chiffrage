@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\items;
 use Livewire\Component;
 use App\Models\Modules;
 use Illuminate\Http\Request;
@@ -26,6 +27,33 @@ class ModuleItems extends Component
     public $dateFin;
     public $jour = [];
 
+    public $numero = "4";
+    public $state ;
+    public $modeles = [];
+
+    // propiete pour l'items
+    public $dataItems = [];
+    public $formAjout = "";
+    public $formModifier = "";
+    public $designationItems;
+    public $commentaireItems;
+    public $rechercheItems;
+
+    // function pour l'items seulement
+
+    public function formItem(){
+        $this->formAjout = "active";
+    }
+    public function storeItems(){
+        items::create([
+            "designation" => $this->designationItems,
+            "commentaire" => $this->commentaireItems,
+        ]);
+        return redirect('/module');
+    }
+
+    // fin function items
+
     public function formulareAjouter(){
         $this->value ="active";
     }
@@ -45,14 +73,7 @@ class ModuleItems extends Component
         $this->value ="";
         $this->form = "";
     }
-    public function mount(){
-        $this->value;
-        $this->form;
-        $this->data = Modules::all();
-      
-
-       
-    }
+ 
     
     protected $rules = [
         'designation' => 'required|min:15',
@@ -70,18 +91,15 @@ class ModuleItems extends Component
             "date_debut" => $this->dateDeb,
             "date_fin" => $this->dateFin,
         ]);
-        Item::create([
-            "id_item" => $this->id_item,
-            "designation" => $this->item,
+        // Item::create([
+        //     "id_item" => $this->id_item,
+        //     "designation" => $this->item,
             
-        ]);
+        // ]);
         return redirect('/module');
     }
     public function update(Request $request)
    {
-
-
-
        Modules::where('id',$request->id)->update([
        "id_module" => $request->id_module,
         "id_item"=>$request->id_item,
@@ -92,10 +110,24 @@ class ModuleItems extends Component
     ]);
     return redirect('/module');
    }
+   public function mount(){
+    $this->value;
+    $this->form;
+    $this->modeles;
+    $this->data;
+    $this->dataItems;
+    $this->state = DB::select("select count(date_fin) as date from modules");
+    // dd(gettype($this->state));
+   
+}
     public function render()
     {
        
-        return view('livewire.module-items');
+        return view('livewire.module-items',[
+            $this->modeles = Modules::where('id','like','%'.$this->numero.'%')->get(),
+            $this->data = Modules::where('designation','like','%'.$this->recherche.'%')->get(),
+            $this->dataItems = Items::where('designation','like','%'.$this->rechercheItems.'%')->get(),
+        ]);
     }
 }
 
