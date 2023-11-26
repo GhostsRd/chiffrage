@@ -369,6 +369,9 @@
                  {{-- </button> --}}
                 </div>
     </div>
+    <div>
+        ok ok
+    </div>
     {{-- <div id="modal" class="form " method="POST">
         <h4>Information</h4>
             L'item est ajouté avec succées 
