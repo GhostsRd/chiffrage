@@ -16,12 +16,12 @@
             </div>
         </div>
     </div>  
-    <div class="container   rounded-3" style="font-size: 0.75rem">
+    <div class="container    rounded-3" style="font-size: 0.75rem">
         
-        <div class="rounded-3 bg-white shadow-sm border-0">
+        <div class="rounded-3  bg-white shadow-sm border-0">
             <form action="" wire:submit.prevent="deleteSelected">
 
-                <table class="  shadow-sm rounded-5 border-0 table table-hovered text-capitalize text-center" style="overflow:scroll" >
+                <table class="  table  card-body  rounded-3 shadow-sm border-0 text-capitalize text-center   " style="border:0;overflow:hidden" >
                     <div class="row  ">
                         <div class="col-lg-2">
                             <h5 id="titre-prof" class="m-1 fw-bold p-1">Liste de devis</h5>

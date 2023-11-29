@@ -13,13 +13,13 @@
       </div>
   <div class="container  bg-white p-2 rounded-3 ">
    <div class="row" >
-      <div class="col-lg-2 offset-lg-1">
+      <div class="col-lg-2 offset-lg-1 offset-1">
          <h5 class="fw-bold p-2 text-info " style="font-family:'Trebuchet MS', sans-serif;font-size:1.2rem">DEVIS</h5>
 
       </div>
       
    </div>
-   <div class="row  rounded-3  p-4 offset-lg-1  col-lg-10 " style="background: rgba(227, 243, 243, 0.371);font-size:0.8rem">
+   <div class="row  rounded-3  p-4 offset-lg-1 offset-1 col-10 col-lg-10 " style="background: rgba(227, 243, 243, 0.371);font-size:0.8rem">
       <div class="col-lg-6 text-capitalize   ">
          @foreach ($alls as $devis )
          <label  >N° Devis :</label> <span class="text-primary fw-bold" style="font-size: 1.1rem"> {{$devis->id}}</span><br>
@@ -100,7 +100,7 @@
                <p for="" class="fw-bold offset-lg-1 " style="font-size: 0.9rem ">Apperçu du devis</p>
             </div>
 
-            <table class=" border offset-lg-1 table table-striped-white table-sm" >
+            <table class=" border offset-lg-1 table table-striped-white table-sm " >
                <thead class="">
                   <tr class="border">
                      
@@ -167,7 +167,7 @@
                <td class="bg-white border-0" ></td>
                <td class="bg-white border-0" ></td>
                <td class="bg-white border-0 fw-bold p-2" >Total</td>
-               <td class="bg-white text-dark border-0 rounded-2 fw-bold p-2" > Ar 
+               <td class="bg-white text-dark bg-success border-0 rounded-2 fw-bold p-2" > Ar 
                   @foreach ($montant_total as $prix )
                      {{$prix->montant}}
                   @endforeach
@@ -191,7 +191,7 @@
    <h5 class="offset-1 fw-bold text-lg text-info">List d'item</h5>
    <br>
    <div class="pl-2">
-      <table class=" border offset-lg-1 table table-sm table-striped-white table-sm w-50"  style="font-size: 0.7rem">
+      <table class=" border offset-1 offset-lg-1 table table-sm table-striped-white table-sm w-75"  style="font-size: 0.7rem">
          <thead>
           <th>Désignation</th>
           <th>Duration</th>
@@ -268,13 +268,13 @@
                        @if ($it->date_debut > 0)
                            <td class="border-0 bg-white"></td>
                        <td  colspan="{{$it->date_debut}}" class="border-0 bg-white"></td>
-                       <td   colspan="{{$it->duree}}" class=" border-0 bg-white" style="font-size: 0.8rem;height:0.7px;padding-left:0;" wire:click="modifier('{{$item->id}}','{{$item->designation}}')" >
+                       <td   colspan="{{$it->duree}}" class=" border-0 bg-white" style="font-size: 0.8rem;height:0.7px;padding-left:0;"  >
                          <div  class="progress-bar text-center border-0 fw-bold text-white  rounded-end-4 shadow-sm  {{$sec->couleur}}" data-toggle="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 100%;height:100%; transition: width 2s ease 0s;"></div>
                      </td>
 
                        @else
                       <td  class="border-0 bg-white"></td>
-                      <td   colspan="{{$it->duree}}" class=" border-0 bg-white " style="font-size: 0.8rem;padding-left:0;height:0.7px" wire:click="modifier('{{$item->id}}','{{$item->designation}}')" >
+                      <td   colspan="{{$it->duree}}" class=" border-0 bg-white " style="font-size: 0.8rem;padding-left:0;height:0.7px"  >
                          <div class=" pl-0 progress-bar text-center border-0 fw-bold text-white  rounded-end-4 shadow-sm  {{$sec->couleur}}" data-toggle="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 100%;height:100%; transition: width 2s ease 0s;"></div>
                      </td>
                        @endif

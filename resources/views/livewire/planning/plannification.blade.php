@@ -44,7 +44,7 @@
                     </a>
                 </li>
                 <li id="personnel" data-aos="fade-right" data-aos-delay="1200" class="mb-2 col-lg-2 col-md-6 text-start shadow-sm rounded-5">
-                    <a href="{{url('/facture')}}t" class="nav-link">
+                    <a href="{{url('/facture')}}" class="nav-link">
                         <div class="iq-icon me-3 text-center fw-bold">
                             <svg data-aos="fade-down" data-aos-delay="2300" class="svg-icon icon-20 rounded-4 text-primary fw-bold" xmlns="http://www.w3.org/2000/svg" width="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
@@ -266,14 +266,14 @@
                               @if ($it->date_debut > 0)
                                   <td class="border-0 bg-white"></td>
                               <td  colspan="{{$it->date_debut}}" class="border-0 bg-white"></td>
-                              <td   colspan="{{$it->duree}}" class=" border-0 bg-white" style="font-size: 0.8rem;height:0.7px;padding-left:0;" wire:click="modifier('{{$item->id}}','{{$item->designation}}')" >
-                                <div data-aos="fade-right" data-aos-delay="500" class="progress-bar text-center border-0 fw-bold text-white  rounded-end-4 shadow-sm  {{$sec->couleur}}" data-toggle="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 100%;height:100%; transition: width 2s ease 0s;"></div>
+                              <td  title="{{$item->designation}}" colspan="{{$it->duree}}" class=" border-0 bg-white" style="font-size: 0.8rem;height:0.7px;padding-left:0;" wire:click="modifier('{{$item->id}}','{{$item->designation}}')" >
+                                <div data-aos="fade-right" data-aos-delay="600" class="progress-bar text-center border-0 fw-bold text-white  rounded-end-4 shadow-sm  {{$sec->couleur}}" data-toggle="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 100%;height:100%; transition: width 2s ease 0s;"></div>
                             </td>
   
                               @else
                              <td  class="border-0 bg-white"></td>
-                             <td   colspan="{{$it->duree}}" class=" border-0 bg-white " style="font-size: 0.8rem;padding-left:0;height:0.7px" wire:click="modifier('{{$item->id}}','{{$item->designation}}')" >
-                                <div data-aos="fade-right" data-aos-delay="600" class=" pl-0 progress-bar text-center border-0 fw-bold text-white  rounded-end-4 shadow-sm  {{$sec->couleur}}" data-toggle="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 100%;height:100%; transition: width 2s ease 0s;"></div>
+                             <td title="{{$item->designation}}"  colspan="{{$it->duree}}" class=" border-0 bg-white " style="font-size: 0.8rem;padding-left:0;height:0.7px" wire:click="modifier('{{$item->id}}','{{$item->designation}}')" >
+                                <div data-aos="fade-right" data-aos-delay="800" class=" pl-0 progress-bar text-center border-0 fw-bold text-white  rounded-end-4 shadow-sm  {{$sec->couleur}}" data-toggle="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 100%;height:100%; transition: width 2s ease 0s;"></div>
                             </td>
                               @endif
                     </tr>
