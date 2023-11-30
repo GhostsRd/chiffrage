@@ -12,14 +12,14 @@
                  
                     <table id="user-list-table" class="card-body table  bg-white  border-0 shadow-sm rounded-3 border  display p-2 " role="grid" data-bs-toggle="data-table">
                             <div class="row p-1">
-                                <div class="col-lg-5">
-                                  <h5 class="fw-bold m-2"># List de séction</h5>
+                                <div class="col-lg-2">
+                                  <h5 class="fw-bold m-2 " id="titre-prof">Liste de séction</h5>
                         
                                 </div>
-                                <div class="col-lg-5 col-8">
+                                <div class="col-lg-4 offset-lg-4 col-8">
                                   <input type="text" name="" id="" placeholder="Recherche ..." wire:model.500ms='recherche'  id="form-hovered" class="form-control-sm w-100 border-0  rounded-5  shadow-sm">
                                 </div>
-                                <div class="col-2 col-lg-2">
+                                <div class="col-1 col-lg-1">
                                   <ul>
                           
                                     <li style="list-style: none;" >
@@ -86,9 +86,9 @@
                             @foreach ($sections as $dat )                           
                                     <tr>
                                         <td class="bg-white p-2 border-0">{{$dat->id}}</td>
-                                        <td class="bg-white p-2 border-0 "><span class="badge {{$dat->couleur}}">{{$dat->designation}}</span></td>
+                                        <td class="bg-white p-2 border-0 fw-bold">{{$dat->designation}}</td>
                                      
-                                        <td class="bg-white p-2 border-0">
+                                        <td class="bg-white p-2 border-0"> 
                                             @if ($dat->commentaire == "")
                                             -
                                             @else
@@ -129,11 +129,7 @@
                           
                               <form wire:submit.prevent="create">
                                   @csrf
-                                  
-                                 
-                                      
-                                         
-                                        
+
                                         <label for="projet" class="text-muted m-2">{{_('Désignation ')}} <span class="text-danger">*</span></label>
                                         <input type="text" id="nom" wire:model='designation' class="card-title form-control rounded-3 shadow-sm m-2" placeholder="designation "  required>   
                     

@@ -57,6 +57,7 @@ Route::get('/facturedevis', [App\Http\Controllers\facturation\Facture::class, 'f
 
 
 Route::get('/profile', [App\Http\Controllers\parametrage\profile::class, 'index'])->middleware('auth');
+Route::post('profile/update', [App\Http\Livewire\Parametrage\Profile::class, 'update'])->middleware('auth');
 Route::get('/employer', [App\Http\Controllers\parametrage\employer::class, 'index'])->middleware('auth');
 
 Route::get('/planification', [App\Http\Controllers\planning\plannification::class, 'index'])->middleware('auth');
@@ -67,3 +68,4 @@ Route::post('planning/update', [App\Http\Livewire\Planning\Plannification::class
 
 
 Route::get('/client', [App\Http\Controllers\client\Client::class, 'index'])->middleware('auth');
+Route::post('client/update', [App\Http\Livewire\Client\client::class, 'update'])->middleware('auth');

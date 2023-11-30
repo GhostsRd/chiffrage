@@ -370,17 +370,17 @@
                 </div>
     </div>
     <div>
-        ok ok
+       
     </div>
-    {{-- <div id="modal" class="form " method="POST">
-        <h4>Information</h4>
-            L'item est ajouté avec succées 
-        <hr>
-        <button type="submit" class="btn btn-sm btn-outline-dark shadow-sm text-warning m-2 rounded-5">
-           Ok
-        </button>
-   
-    </div> --}}
+
+    @if (session('notif'))
+    <div id="notification" class="rounded-5 active shadow text-white ">
+     <a href="" class="nav-link">
+      {{session('notif')}} <span class="text-danger fw-bold">! </span>
+     
+     </a>
+    </div>
+  @endif
 
     
 </div>

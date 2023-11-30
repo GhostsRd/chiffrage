@@ -11,7 +11,7 @@ use Livewire\Component;
 
 class Dev extends Component
 {
- 
+      public $recherche;
     
    
      public function create(){
@@ -42,7 +42,7 @@ class Dev extends Component
       
 
          return view('livewire..section.dev',[
-             "items" => Items::all(),
+             "items" => Items::orderby('id')->where('designation','like','%'.$this->recherche.'%')->paginate(9),
              "sections" => Sections::all(),
              
           

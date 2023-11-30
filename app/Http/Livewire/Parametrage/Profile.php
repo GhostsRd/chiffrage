@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Parametrage;
 
 use App\Models\Profils;
 use Livewire\Component;
+use Illuminate\Http\Request;
 
 class Profile extends Component
 {
@@ -11,7 +12,42 @@ class Profile extends Component
     public $disabled = "disabled";
     public $total;
     public $recherche;
+    // form ajouter
+    public $profile;
+    public $tarif;
+    public $form = "";
+    // form modifier
+    public $form1 = "";
+    public $id_profile;
+    
+    
+    
 
+
+    public function formAjout(){
+
+        $this->form = "active";
+    }
+    public function formModifier($id_profile,$profile,$tarif) {
+
+        $this->id_profile = $id_profile;
+        $this->profile = $profile;
+        $this->tarif = $tarif;
+      
+        $this->form1 = "active";
+       
+    }
+    public function update(Request $request){
+        Profils::where('id',$request->id)
+        ->update([
+            "profile" => $request->profile,
+            "tarif" => $request->tarif,
+        ]);
+        
+        return redirect("/profile")
+        ->with('status',"Modification effectué");
+    }
+    
     public function deleteSelected(){
      
    
@@ -20,9 +56,27 @@ class Profile extends Component
             ->delete();
 
         $this->checkData = [];
-        return redirect('/profile');
-    }
 
+        return redirect("/profile")
+        ->with('status',"Effacé avec succes");
+    }
+    public function insert(){
+        Profils::create([
+            "profile"=>$this->profile,
+            "tarif"=>$this->tarif,
+
+        ]);
+        return redirect("/profile")
+        ->with('status',"Insertion avec succes");
+    }
+    public function mount(){
+        $this->form;
+        $this->form1;
+        $this->profile;
+        $this->tarif;
+
+
+    }
     public function render()
     {
         if(count($this->checkData) > 0){
@@ -33,7 +87,8 @@ class Profile extends Component
              $this->disabled = "disabled";
         }
         return view('livewire.parametrage.profile',[
-            'profiles' => Profils::where('profile','like','%'.$this->recherche.'%')->get(),
+            'profiles' => Profils::where('profile','like','%'.$this->recherche.'%')
+            ->paginate(10),
         ]);
     }
 }

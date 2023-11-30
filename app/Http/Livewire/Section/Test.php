@@ -219,14 +219,26 @@ class Test extends Component
     }
    
 
-    return redirect('/chiffrage')->with("id", $request->id);
+    return redirect('/chiffrage')->with("notif", "Item ajouté avec succés");
   }
 
   public function removeitem($id)
   {
-    Items::where('id', $id)->delete();
-    Realisers::where('id_items', $id)->delete();
-    return redirect("/chiffrage");
+    $vals = Items::where('id', $id)->get();
+    foreach ($vals as $val) {
+      $id_pro  = $val->id_projet;
+    }
+    $res = Devis::where('id_projet',$id_pro)->count('id');
+    // dd($res);
+
+    if($res == 1){  
+      Items::where('id', $id)->delete();
+      Realisers::where('id_items', $id)->delete();
+      return redirect('/chiffrage')->with("notif", "Supression avec succéss");
+    }else{
+      return redirect('/chiffrage')->with("notif", "Vous ne pouvez pas faire une supression, l'item est associé à un autre devi");
+    }
+
   }
 
   public function verificationPlanning()
